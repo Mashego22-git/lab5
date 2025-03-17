@@ -6,7 +6,7 @@ app.use(express.json());
 
 const Books = [
    
-]
+  ]
 
 
 const PORT = 3000;
@@ -17,7 +17,7 @@ app.listen(PORT, () => {
   });
 
 
-
+// WORKS
 app.get("/whoami", (request, response) => {
     const status = {
       "studentNumber": "2654606"
@@ -29,10 +29,11 @@ app.get("/whoami", (request, response) => {
 
 
 
+// 	WORKS
 app.get("/books", (request, response) => {
     
 
-    Books.forEach((book) => {
+    Books.forEach((book, index) => {
         response.send(
             JSON.stringify(book, null, 2)
         );
@@ -42,7 +43,7 @@ app.get("/books", (request, response) => {
 
 
 
-
+// Returns details of a specific book. If the book does not exist, return a 404 Not Found. WORKS
 app.get("/books/:id", (request, response) => {
   
     ID = request.params.id;
@@ -82,7 +83,7 @@ response.status(400).send();
 
  });
 
-
+ // Adding details
 app.post("/books/:id/details", (request, response) => {
 
     const id = request.params.id;
@@ -124,6 +125,7 @@ app.put("/books/:id", (request, response) => {
  });
 
 
+//  Deletes a book from the collection.
 app.delete("/books/:id", (request, response) => {
 
     const Id = request.params.id;
@@ -144,7 +146,7 @@ app.delete("/books/:id", (request, response) => {
 
 
 
-
+// Removes a detail from a book.
 app.delete("/books/:id/details/:detailId", (request, response) => {
 
     const Id = request.params.id;
